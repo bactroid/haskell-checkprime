@@ -1,5 +1,7 @@
 import System.Environment
+import Text.Read
 import Data.List
+import Data.Maybe
 
 factor :: (Integral a) => a -> [a]
 factor n = [x | x <- [2..n - 1], n `mod` x == 0]
@@ -14,17 +16,16 @@ add1AndSelf n [] = 1:n:[]
 findFactors :: (Integral a) => a -> [a]
 findFactors n = sort(add1AndSelf n (factor n))
 
--- This throws an exception when input is invalid. Need to fix that.
-stringToInt :: String -> Integer
-stringToInt x = fst(head(reads x :: [(Integer, String)]))
+stringToInt :: String -> Maybe Integer
+stringToInt x = readMaybe x :: Maybe Integer
 
-parseArgs = (stringToInt . head)
+parseArgs = stringToInt . head
 
 main = do
   args <- getArgs
   let n = parseArgs args
-  if isPrime n
-    then putStrLn ((show n) ++ " is prime")
+  if fromJust $ fmap isPrime n
+    then putStrLn $ (show $ fromJust n) ++ " is prime"
     else do 
-      putStrLn ((show n) ++ " is composite")
-      putStrLn (show (findFactors(parseArgs args)))
+      putStrLn $ (show $ fromJust n) ++ " is composite"
+      putStrLn . show . fromJust $ fmap findFactors n
