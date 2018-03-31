@@ -1,14 +1,13 @@
 name:                checkprime
-version:             0.1.0.0
--- synopsis:
--- description:
-homepage:            https://github.com/githubuser/checkprime#readme
-license:             BSD3
+version:             1.0.0.0
+description:         A simple CLI utility to check whether a number is prime
+homepage:            https://github.com/bactroid/checkprime#readme
+license:             GPL-3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2018 Author name here
-category:            Web
+author:              Kate Haskell
+maintainer:          fuzzcat@bactroid.net
+copyright:           2018 Kate Haskell
+category:            Math
 build-type:          Simple
 cabal-version:       >=1.10
 extra-source-files:  README.md
