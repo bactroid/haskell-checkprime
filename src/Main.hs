@@ -1,7 +1,9 @@
-import Prime
-import Args
-import System.Environment
-import Data.Maybe
+module Main where
+
+import           Args
+import           Data.Maybe
+import           Prime
+import           System.Environment
 
 main = do
   args <- getArgs
@@ -12,6 +14,6 @@ main = do
     else do
       if fromJust resultIsPrime
         then putStrLn $ (show $ fromJust n) ++ " is prime"
-        else do 
+        else do
           putStrLn $ (show $ fromJust n) ++ " is composite"
           putStrLn . show . fromJust $ fmap findFactors n
