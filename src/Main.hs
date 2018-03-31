@@ -5,6 +5,7 @@ import           Data.Maybe
 import           Prime
 import           System.Environment
 
+main :: IO ()
 main = do
   args <- getArgs
   let n = parseArgs args
