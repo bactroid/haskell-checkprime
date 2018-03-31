@@ -1,20 +1,20 @@
 module Main where
 
 import           Args
-import           Data.Maybe
+import           Data.Either
 import           Prime
 import           System.Environment
+
+makeResultText :: Integer -> String
+makeResultText n
+  | isPrime n = show n ++ " is prime."
+  | otherwise = show n ++ " is composite.\n" ++ factorList
+  where factorList = show  $ findFactors n
 
 main :: IO ()
 main = do
   args <- getArgs
   let n = parseArgs args
-  let resultIsPrime = fmap isPrime n
-  if resultIsPrime == Nothing
-    then putStrLn "Please provide a valid postive integer."
-    else do
-      if fromJust resultIsPrime
-        then putStrLn $ (show $ fromJust n) ++ " is prime"
-        else do
-          putStrLn $ (show $ fromJust n) ++ " is composite"
-          putStrLn . show . fromJust $ fmap findFactors n
+  if isRight n
+    then putStrLn . fromRight mempty $ makeResultText <$> n
+    else putStrLn . fromLeft mempty $ n
