@@ -1,7 +1,6 @@
 module Main where
 
 import           Args
-import           Data.Either
 import           Prime
 import           System.Environment
 
@@ -13,7 +12,6 @@ makeResultText n | isPrime n = show n ++ " is prime."
 main :: IO ()
 main = do
   args <- getArgs
-  let n = parseArgs args
-  if isRight n
-    then putStrLn . fromRight mempty $ makeResultText <$> n
-    else putStrLn . fromLeft mempty $ n
+  case parseArgs args of
+    (Left  x) -> putStrLn x
+    (Right x) -> putStrLn . makeResultText $ x
