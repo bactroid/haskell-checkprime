@@ -6,10 +6,9 @@ import           Prime
 import           System.Environment
 
 makeResultText :: Integer -> String
-makeResultText n
-  | isPrime n = show n ++ " is prime."
-  | otherwise = show n ++ " is composite.\n" ++ factorList
-  where factorList = show  $ findFactors n
+makeResultText n | isPrime n = show n ++ " is prime."
+                 | otherwise = show n ++ " is composite.\n" ++ factorList
+  where factorList = show $ findFactors n
 
 main :: IO ()
 main = do
