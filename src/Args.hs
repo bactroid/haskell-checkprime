@@ -11,8 +11,8 @@ stringToInt :: String -> Maybe Integer
 stringToInt x = readMaybe x :: Maybe Integer
 
 maybeHead :: [String] -> Maybe String
-maybeHead [] = Nothing
-maybeHead xs = Just $ head xs
+maybeHead []    = Nothing
+maybeHead (x:_) = Just x
 
 parseArgs :: [String] -> Either Error Integer
 parseArgs = maybeToEither . maybeArgs
