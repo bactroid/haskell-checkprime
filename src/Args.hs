@@ -10,14 +10,9 @@ type Error = String
 stringToInt :: String -> Maybe Integer
 stringToInt x = readMaybe x :: Maybe Integer
 
-maybeHead :: [a] -> Maybe a
-maybeHead []    = Nothing
-maybeHead (x:_) = Just x
+getHead :: [a] -> Either Error a
+getHead []    = Left "getHead: Empty List"
+getHead (x:_) = Right x
 
 parseArgs :: [String] -> Either Error Integer
-parseArgs = maybeToEither . maybeArgs
-  where maybeArgs = stringToInt <=< maybeHead
-
-maybeToEither :: Maybe a -> Either Error a
-maybeToEither Nothing  = Left "Please provide a valid postive integer."
-maybeToEither (Just x) = Right x
+parseArgs = readEither <=< getHead

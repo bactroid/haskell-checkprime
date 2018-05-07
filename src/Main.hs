@@ -13,5 +13,5 @@ main :: IO ()
 main = do
   args <- getArgs
   case parseArgs args of
-    (Left  x) -> putStrLn x
+    (Left  _) -> putStrLn "Please provide a valid postive integer."
     (Right x) -> putStrLn . makeResultText $ x
