@@ -7,9 +7,6 @@ import           Control.Monad
 
 type Error = String
 
-stringToInt :: String -> Maybe Integer
-stringToInt x = readMaybe x :: Maybe Integer
-
 getHead :: [a] -> Either Error a
 getHead []    = Left "getHead: Empty List"
 getHead (x:_) = Right x
