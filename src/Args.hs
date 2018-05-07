@@ -10,7 +10,7 @@ type Error = String
 stringToInt :: String -> Maybe Integer
 stringToInt x = readMaybe x :: Maybe Integer
 
-maybeHead :: [String] -> Maybe String
+maybeHead :: [a] -> Maybe a
 maybeHead []    = Nothing
 maybeHead (x:_) = Just x
 
