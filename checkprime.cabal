@@ -1,7 +1,7 @@
 name:                checkprime
 version:             1.0.0.0
 description:         A simple CLI utility to check whether a number is prime
-homepage:            https://github.com/bactroid/checkprime#readme
+homepage:            https://github.com/bactroid/haskell-checkprime#readme
 license:             GPL-3
 license-file:        LICENSE
 author:              Kate Haskell
